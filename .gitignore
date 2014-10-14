@@ -1,0 +1,11 @@
+*.class
+*.log
+.cache/
+.history/
+.lib/
+dist/*
+target
+.scala_dependencies
+.worksheet
+*.sublime-project
+*.sublime-workspace
