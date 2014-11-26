@@ -10,7 +10,8 @@ object PaymentStatus {
 object Problem extends App {
 
   def finished_?(status: String): Boolean =
-    status == PaymentStatus.COMPLETE || status == PaymentStatus.REJECTED
+    status == PaymentStatus.COMPLETE ||
+    status == PaymentStatus.REJECTED
 
   // Run-time match error:
   "uh-oh" match {
@@ -18,3 +19,10 @@ object Problem extends App {
     case PaymentStatus.COMPLETE    | PaymentStatus.REJECTED => true
   }
 }
+
+
+
+
+
+
+
