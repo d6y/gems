@@ -7,7 +7,7 @@ each package is the _problem.scala_ example and the _solution.scala_ presented.
 
 * Example 2: Stringly typed. If you want to run this example, know that it conncts to a Postgres database.  See _database.scala_ for configuration.
 
-* Example 3:
+* Example 3: Being able to read unit tests.  This is in the _src/main/tests/_ package.
 
 
 
