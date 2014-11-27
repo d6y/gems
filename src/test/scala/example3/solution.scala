@@ -20,3 +20,11 @@ class SolutionSpec extends Specification {
     Processor.diff(applicant.create, input.create) must beSome(NameChange())
   }
 }
+
+
+
+
+
+
+
+
