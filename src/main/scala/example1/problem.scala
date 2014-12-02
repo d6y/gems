@@ -20,3 +20,9 @@ object Problem extends App {
 
  doTheWork(new Settings())
 }
+
+
+
+
+
+

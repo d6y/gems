@@ -27,6 +27,7 @@ libraryDependencies ++= Seq(
   "org.postgresql"       % "postgresql"   % "9.3-1101-jdbc41",
   "org.slf4j"            % "slf4j-nop"    % "1.6.4",
   "org.specs2"          %% "specs2"       % "2.4.12" % "test",
+  "org.scalacheck"      %% "scalacheck"   % "1.12.0" % "test",
   "org.scalaz"          %% "scalaz-core"  % "7.1.0",
   "com.typesafe.play"   %% "play-json"    % "2.3.2",
   "com.chuusai"         %% "shapeless"    % "2.0.0"

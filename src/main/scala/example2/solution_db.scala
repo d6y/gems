@@ -23,9 +23,7 @@ trait Tables {
   lazy val payments = TableQuery[Payments]
 
   def pending(implicit s: Session) =
-    for {
-      payment <- payments if payment.status === (Pending: Value)
-    } yield payment
+    payments.filter(_.status === (Pending : Value)).list
 }
 
 object DbSolution extends App {
@@ -33,7 +31,7 @@ object DbSolution extends App {
   import Schema._, profile.simple._
 
   db.withSession { implicit session =>
-    println(pending.run)
+    println(pending)
   }
 
 }

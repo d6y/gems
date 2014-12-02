@@ -16,13 +16,13 @@ object Solution extends App {
 
   import Status._
 
-  def finished_?(status: Status.Value): Boolean =
+  def isFinished(status: Status.Value): Boolean =
     status == Complete || status == Rejected
 
   // Compile error:  match may not be exhaustive
   // It would fail on the following input: NotStarted
   /*
-  def inProgress_?(status: Status.Value): Boolean =
+  def isInProgress(status: Status.Value): Boolean =
     status match {
       case Pending             => true
       case Complete | Rejected => false

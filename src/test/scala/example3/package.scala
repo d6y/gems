@@ -4,10 +4,12 @@ package object example3 {
 
   object Code extends Enumeration {
     val Important = Value
+    val Secret    = Value
   }
 
   object Choice extends Enumeration {
-    val Third = Value
+    val Second = Value
+    val Third  = Value
   }
 
   object Processor {

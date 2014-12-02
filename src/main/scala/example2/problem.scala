@@ -9,7 +9,7 @@ object PaymentStatus {
 
 object Problem extends App {
 
-  def finished_?(status: String): Boolean =
+  def isFinished(status: String): Boolean =
     status == PaymentStatus.COMPLETE ||
     status == PaymentStatus.REJECTED
 
@@ -19,10 +19,3 @@ object Problem extends App {
     case PaymentStatus.COMPLETE    | PaymentStatus.REJECTED => true
   }
 }
-
-
-
-
-
-
-
