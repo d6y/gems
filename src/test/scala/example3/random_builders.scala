@@ -4,8 +4,6 @@ import org.scalacheck._, Arbitrary._, Gen._
 
 object Builders {
 
-  implicit val applicant: Arbitrary[Applicant] = Arbitrary(applicantGenerator)
-
   lazy val applicantGenerator: Gen[Applicant] =
     for {
       number    <- tenRandomDigits
@@ -19,6 +17,8 @@ object Builders {
   implicit class ApplicantBuider(app: Applicant) {
     def withNoForenames: Applicant = app.copy(forenames=None)
   }
+
+  implicit val applicant: Arbitrary[Applicant] = Arbitrary(applicantGenerator)
 
   // Same pattern for random CSV Row
   // ...
