@@ -14,7 +14,7 @@ object Builders {
   val tenRandomDigits =
     listOfN(10, Gen.numChar).map(_.mkString)
 
-  implicit class ApplicantBuider(app: Applicant) {
+  implicit class ApplicantOps(app: Applicant) {
     def withNoForenames: Applicant = app.copy(forenames=None)
   }
 
