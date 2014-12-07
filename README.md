@@ -1,4 +1,4 @@
-# Source code examples from Coding Gems
+# Source Code Examples from _Code Review Gems_
 
 Each example from the presentations is in a package (e.g., _src/main/scala/example1_). Inside
 each package is the _problem.scala_ example and the _solution.scala_ presented.
@@ -9,8 +9,11 @@ each package is the _problem.scala_ example and the _solution.scala_ presented.
 
 * Example 3: Being able to read unit tests.  This is in the _src/main/tests/_ package.
 
+# Presentation
 
-# Links from talk
+<script async="async" class="speakerdeck-embed" data-id="7bd44f305d1b0132feae261f207a90b3" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+
+# Links mention in the Presentation
 
 * http://underscoreconsulting.com/blog/posts/2014/09/03/enumerations.html
 
