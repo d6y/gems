@@ -11,7 +11,7 @@ each package is the _problem.scala_ example and the _solution.scala_ presented.
 
 # Presentation
 
-<script async="async" class="speakerdeck-embed" data-id="7bd44f305d1b0132feae261f207a90b3" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+https://speakerdeck.com/d6y/code-review-gems
 
 # Links mention in the Presentation
 
