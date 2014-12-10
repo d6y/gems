@@ -1,0 +1,194 @@
+Talk Outline
+============
+
+* Hello!
+  - My name's Richard. I work for Underscore Consulting.
+  - I'm talking about what we find as a result of reviewing the Scala projects.
+  - We get to work with different teams, see variety of code,so I thought it'd fun to show some of the common problems we see cropping up.
+  - The point of this is two fold.
+    - It's partly to show how to avoid these problems.
+    - It's also to forewarn you. If you're in a new team, or or in the process of getting a team together, this session might give you ideas about what to watch out for, and what to plan for.
+
+* Plan
+  - Context of external code review.
+  - Examples: broad categories, but looking at the context of where these things crop up.
+  - Limitations of code review.
+
+* External Review
+  - What it sounds like.
+  - Anyone can do it: do not need to pay a consultancy!
+  - Code review is good
+  - Focus is different
+    - Good Scala
+    - Code maintained?
+  - Because of assurance, diligence.
+  - Biases the examples
+
+* What is good Scala?
+  - Not talking style-guide.
+  - Are we making the best use of Scala?
+  - A point to return to later.
+
+
+* To set the scene...
+  - the typical challenges we see look like this
+  - see these in what follows
+
+* Example 1
+  - Look though code and suggest an alternatives.
+  - Have a better idea?
+  - It's an application
+  - It needs config
+  - Setting contains an option: this is going to be the problem
+  - doTheWork
+
+* Get on optoon
+  - Developer knows what was going to happen, so they recover
+  - Code works.
+  - What's wrong with it?
+  - Verbose and ugly, not idiomatic. But those things are easy to fix.
+  - Trivial, until copied deeper into code
+
+* Painted into a corner
+  - Implementing a Settings => Unit.
+  - Their only hope of signaling failure is via exceptions.
+  - Design concern
+  - But, basically a script, run by staff in the company.
+
+* Focus on settings
+  - Could just change where the problem is
+  - A step further.
+  - Project-level concern
+  - Solve it once.
+
+* Library
+  - Here we're showing the use of the Typesafe config library.
+  - Not Option ... because that's the truth of the situation.
+  - Settings picks out what it needs
+  - Does the work, as it has what it needs.
+  - Configuration library throws an exception. It says....
+  - End result is the same.
+  - Improvement.
+
+* Don't reinvent
+  - Use or steal.
+  - Custom config
+
+* Knowing what's out there
+  - web sites like this (no section on configuration)
+  - meetups, in London there's something happen almost every week.
+  - you're all OK, becayse you're here at a conference
+
+* Unit
+  - you're at the end of the line. If other things are happening, well, you just have to know about them. You're getting no help from the type system once you've gone to Unit.
+  - cannot compose this function
+  - Make time to explore.
+  - Willing to experiment, spikes.
+  - Look out for Unit
+
+* Good Scala?
+  - You know it when you see it.
+  - Not absolute.
+  - Teams know when it's not good.
+
+* Type system
+  - crops up
+  - Enumeration, expressed as string constants.  The problem here is you've gone to the trouble to use a language like Scala, with a good type system, and you're ignoring it.
+
+* Problems
+  - Passing any old string
+  - Run-time match failure.
+  - Add a new value the compiler can't help you track it down.
+  - Bad:  abandoning the help you get from the compiler. This developer is not making good use of Scala.
+
+* Enumerations
+  - Not perfect. As about being this light, one class, kind of efficiency.
+  - Then ask why.
+
+* Example
+  - First thing to note here is that this is not much more code to use than the stringy example we saw.  But it is a big improvement.
+
+
+* Good/bad
+  - And a lot better than String constants.
+  - I worry that people have heard that enumerations aren't perfect, and ended up doing something worse. Which is a shame.
+
+* The other way is just as short
+  - And this is one of the strong points of Scala. If you don't like something, you can probably roll your own alternative.
+  - short again
+  - values, plus list
+    - macros
+    - If you don't need to do that, you don't have to bother with this. A
+  - We see some improvements.
+
+* Not much effort, so why not?
+
+* Slick
+  - Becky
+  - The thing we need to do to make that work, two functions.
+  - It's a pretty small amount of code.
+  - But when you're starting out, all these pieces take a while to slot into place.
+
+* Summary
+  - Type system can make a big difference
+  - Low-level to types quickly
+
+* Example 3
+  - Maintenance
+  - Tests are a living document
+  - Need to be able to make sense of them
+  - Tests that are kind of a liability, especially around how they handle input data for the test. Rather than reconstruct one from code we've seen, I thought I'd show you some of the code I've written that has this problem.
+
+* Specs 2
+
+* Implementation
+  - person
+  - input
+  - diff
+  - Specs2 will check that it returns an optional value, and that optional value must be a Some and contain this NameChange value. And if it doesn't the test fails.
+
+* So what's wrong with this test?
+  - does it pass?
+  - too much detail
+  - Coming to this code as a new developer, we don't know.
+  - mandatory fields
+  - The point here is that there's stuff in this test that has no relevance for the test.
+    - copy and paste
+    - a function that creates the data, but then no-one can ever change.
+
+* Flexible syntax
+  - just contains what has to be there
+  - descriptive methods
+  - better test
+  - This, BTW, is nothing new. It's the builder pattern, for those of you who know it. Scala's syntax just makes it nicer to use.
+
+* How - simple implementation with fixed data
+
+* How - random data
+  - Scala check
+
+* Could just use random data in our tests, but we can make use of scala check integration
+
+
+* What do we observe from this?
+  - decades old
+  - nicer syntax to make the test look like the way you want to
+  - handy libs
+
+
+* That was three examples
+  - Where teams have struggled to solve a problem, they often know it.
+  - How teams document what they're doing. It's a big and very team specific topic, it seems.
+  - No big picture.
+
+* Limit of review
+  - Most of these points have come from code review.
+  - Not perfect
+  - This quote relates to manufacturing.  If you have a production line that is producing low-quality goods, reviewing it isn't going to fix that.
+  - But no-one would expect it to.
+  - Reviews are relatively cheap, but the problem is that it happens late in the development process. In the case where the quality is low, bringing it up to quality probably might be re-thinking the approach; or it might be fundamental in how the work is delivered. And you need to look at the cause then, if some other approach is needed.
+  - What review will do is tell you if you have anything to worry about.
+
+* Summary
+  - The summary from this boils down to getting in the wider scala ecosystem. Knowing about libraries, getting more familiar with using them.  Go to those meetups, go digging around that list of libraries, have a look at typelevel.org, and see some of the options that are out there.
+  - And, don't leave it all to external review. That can detect problems, suggest ways to go forward, but by itself isn't enough. Think about the maintenance of the code from an external party or new team member trying to get going with what you've built. Pairing?
